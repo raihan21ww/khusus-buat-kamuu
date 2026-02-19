@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine! 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+            color: #4a4a4a;
+            text-align: center;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 600px;
+            width: 90%;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            font-size: 1.5em;
+            opacity: 0.7;
+            animation: float 8s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(180deg); opacity: 0; }
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin: 0 0 10px;
+            color: #e91e63;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        button {
+            background: linear-gradient(135deg, #e91e63, #f06292);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: 400;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+        }
+        #message {
+            margin-top: 30px;
+            font-size: 1.3em;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        #message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="glass">
+        <h1>Happy Valentine, Rindii ! 💕</h1>
+        <p>Aku tuh gak selalu bisa ngerangkai kata kata, Tapi satu hal yang pasti, Kamu punya tempat spesial and pentingg gitu di bagian hidupku yang lagi atau  terus berkembang buat jadi lebih baik, makasih ya 🫶</p>
+        <button onclick="showMessage()">Buka Pesan 💌</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // Animasi hati melayang
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+        setInterval(createHeart, 1000);
+
+        // Pesan elegan acak
+        const messages = [
+            "I will always be your biggest supporter and will be there for you anytime. ❤️",
+            "Together or not together, i hope the universe takes care of you no matter what. 💕",
+            "Im so proud of uuuuu 🌟",
+            "Semangat terus ya, semoga kamu bisa dapatin apa yang kamu mau, i always watch you from afar",
+            "i want to see you win, i want to see you achieve all you dream, because you deserve the world"
+        ];
+        function showMessage() {
+            const msg = document.getElementById('message');
+            msg.textContent = messages[Math.floor(Math.random() * messages.length)];
+            msg.classList.add('show');
+            setTimeout(() => msg.classList.remove('show'), 5000);
+        }
+    </script>
+</body>
+</html>
